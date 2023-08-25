@@ -37,8 +37,9 @@ void insertionSort(int* array, int numbersCount) {
 			rightArrow = leftArrow + 1;
     	array[rightArrow] = array[leftArrow];
     	leftArrow--;
+			rightArrow--;
 		}
-		array[rightArrow - 1] = candidate;
+		array[rightArrow] = candidate;
 	}
 	printArray(array, numbersCount);
 
@@ -58,5 +59,6 @@ int main(int argc, char* argv[]){
 		array[i] = inputNumber;
 	}
 	insertionSort(array, numbersCount);
-	
+
+	return 0;
 }
