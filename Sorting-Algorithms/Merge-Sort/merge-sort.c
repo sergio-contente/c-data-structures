@@ -1,9 +1,9 @@
-#include "stdio.h"
-#include "stdlib.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 void showMenu() {
 	printf("===========================\n");
-	printf("===   MERGE SORT  =====\n");
+	printf("===   MERGE SORT      =====\n");
 	printf("===========================\n");
 	printf("***************************\n");
 	printf("===========================\n");
