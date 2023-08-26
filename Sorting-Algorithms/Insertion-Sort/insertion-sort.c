@@ -14,6 +14,8 @@ void showMenu() {
 	printf("=== 2) Insertion Sort              =====\n");
 	printf("=== 3) Descreasing Insertion Sort  =====\n");
 	printf("=== 4) Reverse Insertion Sort      =====\n");
+	printf("========================================\n");
+
 }
 
 void printArray(int* array, int numbersCount){
