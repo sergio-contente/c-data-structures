@@ -1,5 +1,10 @@
 
 #include<stdio.h>
+
+typedef int bool;
+#define TRUE  1
+#define FALSE 0
+
 void merge(int* array, int left, int middle, int right){
 	int arrowLeft, arrowRight, arrowMerge = left;
 	int length_left = middle - left + 1;
@@ -68,5 +73,38 @@ void mergeSort(int* array, int left, int right) {
 		mergeSort(array, left, middle);
 		mergeSort(array, middle+1, right);
 		merge(array, left, middle, right);
+	}
+}
+
+void RecursiveBinarySearch(int* array, int value, int left, int right, bool foundValue){
+	int mid;
+	if(foundValue == FALSE){
+
+		// Base case
+		if (right == left)
+		{
+			if (array[left] == value)
+			{
+				printf("Value %d found! It's the %d element of the ordered array.", value, left + 1);
+				foundValue = TRUE;
+				return;
+			} else {
+				printf("O valor %d is not inside of the elements array.", value);
+				return;
+			} 
+		} else {
+				mid = (left + right)/2;
+				if (array[mid] == value) {
+					printf("Value %d found! It's the %d element of the ordered array.", value, mid + 1);
+					foundValue = TRUE;
+					return;
+				} 
+				else if (value < array[mid])
+				{
+					RecursiveBinarySearch(array, value, left, mid - 1, foundValue);
+				} else {
+					RecursiveBinarySearch(array, value, mid + 1, right, foundValue);
+				}
+			}
 	}
 }
