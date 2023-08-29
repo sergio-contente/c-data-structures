@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 void showMenu() {
 	printf("========================================\n");
@@ -116,6 +117,10 @@ int main(int argc, char* argv[]){
 	int user_input;
 	int counter;
 
+
+	clock_t t_0;
+	double time_consumed;
+
 	showMenu();
 	printf("\nInput: ");
 	scanf("%d", &user_input);
@@ -132,19 +137,39 @@ int main(int argc, char* argv[]){
 	{
 	case 1:
 		counter = 0;
+		t_0 = clock();
 		RecursiveInsertionSort(array, numbersCount, counter);
+		t_0 = clock() - t_0;
+		time_consumed = ((double)t_0)/CLOCKS_PER_SEC;
+		printf("It took %f seconds for sorting the array \n", time_consumed);
 		break;
 	case 2:
+		t_0 = clock();
 		InsertionSort(array, numbersCount);
+		t_0 = clock() - t_0;
+		time_consumed = ((double)t_0)/CLOCKS_PER_SEC;
+		printf("It took %f seconds for sorting the array \n", time_consumed);
 		break;
 	case 3:
+		t_0 = clock();
 		DecreaseInsertionSort(array, numbersCount);
+		t_0 = clock() - t_0;
+		time_consumed = ((double)t_0)/CLOCKS_PER_SEC;
+		printf("It took %f seconds for sorting the array \n", time_consumed);
 		break;
 	case 4:
+		t_0 = clock();
 		BackwardsInsertionSort(array,numbersCount);
+		t_0 = clock() - t_0;
+		time_consumed = ((double)t_0)/CLOCKS_PER_SEC;
+		printf("It took %f seconds for sorting the array \n", time_consumed);
 		break;
 	default:
+		t_0 = clock();
 		InsertionSort(array, numbersCount);
+		t_0 = clock() - t_0;
+		time_consumed = ((double)t_0)/CLOCKS_PER_SEC;
+		printf("It took %f seconds for sorting the array \n", time_consumed);
 		break;
 	}
 	return 0;
