@@ -108,3 +108,26 @@ void RecursiveBinarySearch(int* array, int value, int left, int right, bool foun
 			}
 	}
 }
+
+void swap (int* number1, int* number2)
+{
+	int temp;
+	temp = *number1;
+	*number1 = *number2;
+	*number2 = temp;
+}
+
+int GetArraySize(int* A) {
+	int size = sizeof(A) / sizeof(A[0]);
+	return size;
+}
+
+void printArray(int* array, int numbersCount){
+	printf("Array:\n[ ");
+	
+	for (int i = 0; i < numbersCount; i++)
+	{
+		printf("%d, ", array[i]);
+	}
+	printf("]\n");
+}
