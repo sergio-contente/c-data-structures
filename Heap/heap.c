@@ -56,6 +56,18 @@ void BuildMaxHeap(int* A, int size) {
 	}
 }
 
+void HeapSort(int* A, int size) {
+	int original_size = size;
+	BuildMaxHeap(A, size);
+	while (size > 0)
+	{
+		swap(&A[0], &A[size - 1]);
+		size--;
+		BuildMaxHeap(A, size);
+	}
+	printArray(A, original_size);
+}
+
 int main(int argc, char* argv[]){
 	int numbersCount;
 	int* array;
@@ -82,6 +94,6 @@ int main(int argc, char* argv[]){
 	// printf("Size of array_name: %d\n", sizeof(array));
 	// printf("Size of array_index: %d\n", sizeof(array[0]));
 	// printf("Size na main: %d\n", size);
-	BuildMaxHeap(array, numbersCount);
+	HeapSort(array, numbersCount);
 	return 0;
 }
