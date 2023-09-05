@@ -4,24 +4,27 @@
 #include "../Resources.c"
 
 int GetParent(int node_index){
-	return node_index/2;
+	return (node_index - 1) /2;
 }
 
 int GetLeftChild(int node_index){
-	return 2 * node_index;
-}
-
-int GetRightChild(int node_index){
 	return 2 * node_index + 1;
 }
 
-void MaxHeapify(int* A, int node_index){
-	int left, right, greatest, heap_size;
+int GetRightChild(int node_index){
+	return 2 * node_index + 2;
+}
+
+void MaxHeapify(int* A, int node_index, int heap_size){
+	int left, right, greatest;
 	left = GetLeftChild(node_index);
 	right = GetRightChild(node_index);
-	heap_size = GetArraySize(A);
 
-	if (left <= heap_size && A[left] > A[node_index])
+		printf("left: %d\n", left);
+		printf("right: %d\n", right);
+
+
+	if (left < heap_size && A[left] > A[node_index])
 	{
 		greatest = left;
 	}
@@ -29,25 +32,28 @@ void MaxHeapify(int* A, int node_index){
 		greatest = node_index;
 	}
 
-	if (right <= heap_size && A[right] > A[node_index])
+	if (right < heap_size && A[right] > A[node_index])
 	{
 		greatest = right;
 	}
 
+		printf("greatest: %d\n", greatest);
+
 	if (greatest != node_index)
 	{
 		swap(&A[node_index], &A[greatest]);
-		MaxHeapify(A, greatest);
+		MaxHeapify(A, greatest, heap_size);
 	}
 }
 
-void BuildMaxHeap(int* A) {
-	int size = GetArraySize(A);
-	for (int i = size - 1; i <= 0; i--)
+void BuildMaxHeap(int* A, int size) {
+	printf("size: %d\n", size);
+	for (int i = size / 2 - 1; i >= 0; i--)
 	{
-		MaxHeapify(A, i);
+		printf("Entrou no for do build\n");
+		MaxHeapify(A, i, size);
+		printArray(A, size);
 	}
-	printArray(A, size);
 }
 
 int main(int argc, char* argv[]){
@@ -72,6 +78,10 @@ int main(int argc, char* argv[]){
 		inputNumber = atoi(argv[i + 1]); // argv[0] is the name of the program
 		array[i] = inputNumber;
 	}
-	BuildMaxHeap(array);
+	// Apparently, we can't use sizeof() with pointers, only with static arrays
+	// printf("Size of array_name: %d\n", sizeof(array));
+	// printf("Size of array_index: %d\n", sizeof(array[0]));
+	// printf("Size na main: %d\n", size);
+	BuildMaxHeap(array, numbersCount);
 	return 0;
 }
