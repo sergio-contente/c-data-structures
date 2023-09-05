@@ -32,7 +32,7 @@ void MaxHeapify(int* A, int node_index, int heap_size){
 		greatest = node_index;
 	}
 
-	if (right < heap_size && A[right] > A[node_index])
+	if (right < heap_size && A[right] > A[greatest])
 	{
 		greatest = right;
 	}
